@@ -2,7 +2,7 @@
 
 # Create the storage tree if needed and fix permissions
 cp -r storage.skel/* storage/
-chown -R www-data:www-data storage/ bootstrap/
+chown -R apache:apache storage/ bootstrap/
 
 # Refresh the environment
 php artisan storage:link
@@ -19,7 +19,7 @@ php artisan config:cache
 
 # Run a worker if it is set as embedded
 if [ "$HORIZON_EMBED" = "true" ]; then
-  gosu www-data:www-data php artisan horizon &
+  gosu apache:apache php artisan horizon &
 fi
 
 # Finally run Apache
