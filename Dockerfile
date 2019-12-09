@@ -1,0 +1,1 @@
+FROM alexphillips/pixelfed:latest
